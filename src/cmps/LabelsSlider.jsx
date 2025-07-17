@@ -1,5 +1,6 @@
 import React, { useEffect, useState, useRef } from 'react'
 import { LabelPreview } from './LabelPreview'
+import { FilterDropdown } from './FilterDropdown'
 // import {ReactComponent as RightArrowIcon} from '../assets/svgs/arrow-right.svg?react'
 
 const labels = [
@@ -134,10 +135,10 @@ const labels = [
       'https://res.cloudinary.com/do0a92wpm/image/upload/v1699389302/categories/arctics_obddis.png',
   },
 ]
+
 export function LabelsSlider({filterBy, onSetFilterBy}) {
-  
   const getShowCountByScreen = () => {
-    const width = window.innerWidth
+  const width = window.innerWidth
     if (width < 480) return 3
     if (width < 640) return 4
     if (width < 768) return 5
@@ -150,8 +151,9 @@ export function LabelsSlider({filterBy, onSetFilterBy}) {
   const [itemWidth, setItemWidth] = useState(96)
   const [firstIdx, setFirstIdx] = useState(0)
   const [showCount, setShowCount] = useState(getShowCountByScreen())
+  const [isFilterOpen, setIsFilterOpen] = useState(false)
   const itemRef = useRef(null)
-  
+
   useEffect(() => {
     const handleResize = () => setShowCount(getShowCountByScreen())
     window.addEventListener('resize', handleResize)
@@ -159,11 +161,11 @@ export function LabelsSlider({filterBy, onSetFilterBy}) {
   }, [])
 
   useEffect(() => {
-  if (itemRef.current) {
-    const width = itemRef.current.getBoundingClientRect().width
-    setItemWidth(width + 16) 
-  }
-}, [showCount])
+    if (itemRef.current) {
+      const width = itemRef.current.getBoundingClientRect().width
+      setItemWidth(width + 16)
+    }
+  }, [showCount])
 
   const lastIdx = Math.min(firstIdx + showCount - 1, labels.length - 1)
 
@@ -177,37 +179,57 @@ export function LabelsSlider({filterBy, onSetFilterBy}) {
   }
 
   return (
-    <section className='labels-container full'>
-      <div className="slider-grid-area">
-          <div className="slider-wrapper">
-          <div className="slider-track" 
-              style={{ '--translate-x': `${-firstIdx * (itemWidth || 96)}px` }}
+    <section className='labels-slider-container full'>
+      <div className='labels-slider-grid-area'>
+        <div className='labels-slider-wrapper'>
+          <div
+            className='labels-slider-track'
+            style={{
+              '--translate-x-labels': `${-firstIdx * (itemWidth || 96)}px`,
+            }}
           >
             {labels.map((label, idx) => (
-              <div className='slider-item' ref={firstIdx === 0 && idx === 0 ? itemRef : null} key={idx}>
+             <div className='slider-item' ref={firstIdx === 0 && idx === 0 ? itemRef : null} key={idx}>
                 <LabelPreview label={label} filterBy={filterBy} onSetFilterBy={onSetFilterBy}/>
+                <LabelPreview label={label} />
               </div>
             ))}
-          </div>
+            </div>
         </div>
       </div>
-       
-      
-      <div className='label-buttons'>
-        <div className="btn-left">
+
+      <div className='labels-slider-buttons-container'>
+        <div className='labels-slider-btn-left'>
           {firstIdx > 0 && (
-          <button onClick={onPrevClick} className='label-btn left'>
-            <img src="https://res.cloudinary.com/do0a92wpm/image/upload/v1699218785/left-arrow_ap8jfr.svg" />
-          </button>
-        )}
+            <button onClick={onPrevClick} className='labels-slider-btn left'>
+              <img src='https://res.cloudinary.com/do0a92wpm/image/upload/v1699218785/left-arrow_ap8jfr.svg' />
+            </button>
+          )}
         </div>
-        <div className="btn-right">
+        <div className='labels-slider-btn-right'>
           {lastIdx < labels.length - 1 && (
-          <button onClick={onNextClick} className='label-btn right'>
-            <img src="https://res.cloudinary.com/do0a92wpm/image/upload/v1699218790/right-arrow_pxdlnj.svg" />
-          </button>
-        )}
+            <button onClick={onNextClick} className='labels-slider-btn right'>
+              <img src='https://res.cloudinary.com/do0a92wpm/image/upload/v1699218790/right-arrow_pxdlnj.svg' />
+            </button>
+          )}
         </div>
+      </div>
+      <div
+        className='labels-slider-filter-container'
+        style={{ position: 'relative' }}
+      >
+        <button
+          className='labels-slider-filter-btn'
+          onClick={() => setIsFilterOpen(true)}
+        >
+          <img src='https://res.cloudinary.com/do0a92wpm/image/upload/v1699388798/filterSvg_pvzh1i.svg' />
+          <span>Filters</span>
+        </button>
+
+        <FilterDropdown
+          isOpen={isFilterOpen}
+          onClose={() => setIsFilterOpen(false)}
+        />
       </div>
     </section>
   )
