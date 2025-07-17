@@ -17,7 +17,7 @@ import { userService } from '../services/user'
 
 import { HomeList } from '../cmps/HomeList'
 import { HomeFilter } from '../cmps/HomeFilter'
-import { Slider } from '../cmps/Slider.jsx'
+import { LabelsSlider } from '../cmps/LabelsSlider.jsx'
 import { MultiCarousel } from '../cmps/MultiCarousel.jsx'
 import Carousel from 'react-multi-carousel'
 
@@ -67,7 +67,7 @@ export function HomeIndex() {
 
   return (
     <main className='home-index'>
-      <Slider />
+      <LabelsSlider filterBy={filterBy} onSetFilterBy={onSetFilterBy}/>
       {/* <MultiCarousel /> */}
       {/*<header>
          <h2>Homes</h2>

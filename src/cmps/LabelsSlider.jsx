@@ -134,7 +134,7 @@ const labels = [
       'https://res.cloudinary.com/do0a92wpm/image/upload/v1699389302/categories/arctics_obddis.png',
   },
 ]
-export function Slider() {
+export function LabelsSlider({filterBy, onSetFilterBy}) {
   
   const getShowCountByScreen = () => {
     const width = window.innerWidth
@@ -185,7 +185,7 @@ export function Slider() {
           >
             {labels.map((label, idx) => (
               <div className='slider-item' ref={firstIdx === 0 && idx === 0 ? itemRef : null} key={idx}>
-                <LabelPreview  label={label} />
+                <LabelPreview label={label} filterBy={filterBy} onSetFilterBy={onSetFilterBy}/>
               </div>
             ))}
           </div>
