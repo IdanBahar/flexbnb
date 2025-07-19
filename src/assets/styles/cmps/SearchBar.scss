@@ -121,15 +121,6 @@
     width: 48px;
     border-radius: 100%;
 
-    // .search-icon {
-    //   width: 24px;
-    //   height: 24px;
-    //   background-image: url(../../svgs/search-icon.svg);
-    //   background-position: center;
-    //   background-repeat: no-repeat;
-    //   background-size: 100%;
-    // }
-
     .injected-svg
     {
       width: 24px;
@@ -205,20 +196,18 @@
 
     .search-button {
       background-color: $primary-pink;
-      display: inline-block;
+      display: inline-flex;
       height: 32px;
       margin: 0px;
       padding: 0;
       width: 32px;
       border-radius: 100%;
 
-      .search-icon {
-        width: 12px;
-        height: 12px;
-        background-image: url(../../svgs/search-icon.svg);
-        background-position: center;
-        background-repeat: no-repeat;
-        background-size: 100%;
+    .injected-svg
+      {
+        width: 15px;
+        height: 15px;
+        display: block;
       }
     }
   }
