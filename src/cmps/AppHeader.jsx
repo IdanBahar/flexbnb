@@ -40,6 +40,8 @@ export function AppHeader() {
           <span>flexbnb</span>
         </NavLink>
 
+        <SearchBar isScrolled={isScrolled} />
+
         {/* <div className='nav-links-container'>
           <NavLink to='/about'>About</NavLink>
           <NavLink to='/home'>Homes</NavLink>
@@ -65,7 +67,7 @@ export function AppHeader() {
           </div>
         )}
       </nav>
-      <SearchBar isScrolled={isScrolled} />
+      
     </header>
   )
 }

@@ -4,8 +4,10 @@ import { homeReducer } from './home.reducer'
 import { userReducer } from './user.reducer'
 import { reviewReducer } from './review.reducer'
 import { systemReducer } from './system.reducer'
+import { searchReducer } from './search.reducer'
 
 const rootReducer = combineReducers({
+  searchModule: searchReducer,
   homeModule: homeReducer,
   userModule: userReducer,
   systemModule: systemReducer,
