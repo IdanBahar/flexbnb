@@ -7,18 +7,11 @@ import { initDemoUser } from '../store/user.actions'
 import { FaAirbnb } from 'react-icons/fa'
 import { useEffect, useState } from 'react'
 import { SearchBar } from './SearchBar'
-<<<<<<< HEAD
 import { ReactSVG } from 'react-svg'
 import { userService } from '../services/user'
-
-export function AppHeader() {
-  const loggedInUser = useSelector(state => state.userModule.user)
-=======
 import { LabelsSlider } from './LabelsSlider'
 
 export function AppHeader() {
-  const user = useSelector((storeState) => storeState.userModule.user)
->>>>>>> main
   const navigate = useNavigate()
   const [isScrolled, setIsScrolled] = useState(false)
   const [isSmallScreen, setIsSmallScreen] = useState(false)
@@ -31,7 +24,6 @@ export function AppHeader() {
   }, [])
 
   useEffect(() => {
-<<<<<<< HEAD
       const onScroll = () => setIsScrolled(window.scrollY > 20)
       window.addEventListener('scroll', onScroll)
       return () => window.removeEventListener('scroll', onScroll)
@@ -47,18 +39,8 @@ export function AppHeader() {
       initDemoUser()
     }
   }
-=======
-    const handleScroll = () => setIsScrolled(window.scrollY > 20)
-    window.addEventListener('scroll', handleScroll)
-    return () => window.removeEventListener('scroll', handleScroll)
-  }, [])
-
-  useEffect(() => {
-    initDemoUser()
-  }, [])
 
   const shouldShowScrolledStyle = isScrolled || isSmallScreen
->>>>>>> main
 
   async function onLogout() {
     try {
