@@ -7,9 +7,10 @@ import { FaAirbnb } from 'react-icons/fa'
 import { useEffect, useState } from 'react'
 import { SearchBar } from './SearchBar'
 import { ReactSVG } from 'react-svg'
+import { userService } from '../services/user'
 
 export function AppHeader() {
-  // const user = useSelector((storeState) => storeState.userModule.user)
+  const loggedInUser = useSelector(state => state.userModule.user)
   const navigate = useNavigate()
   const [isScrolled, setIsScrolled] = useState(false)
   const [isMobile, setIsMobile] = useState(window.innerWidth < 580)
@@ -22,13 +23,20 @@ export function AppHeader() {
   
   useEffect(() => {
       const onScroll = () => setIsScrolled(window.scrollY > 20)
-      window.addEventListener('scroll', handleScroll)
-      return () => window.removeEventListener('scroll', handleScroll)
+      window.addEventListener('scroll', onScroll)
+      return () => window.removeEventListener('scroll', onScroll)
   }, [])
 
   useEffect(()=>{
-    initDemoUser()
+    loadUser()
   }, [])
+
+  function loadUser(){
+    const loggedInUser = userService.getLoggedinUser()
+    if (!loggedInUser) {
+      initDemoUser()
+    }
+  }
 
   async function onLogout() {
     try {
