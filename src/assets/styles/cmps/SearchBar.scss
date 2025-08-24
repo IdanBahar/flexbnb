@@ -54,7 +54,7 @@
     align-items: start;
     flex-direction: column;
     padding: 0 1.75rem;
-    height: 100%;
+    height00: 100%;
     border-radius: $search-bar-border-radius;
     color: rgb(34, 34, 34);
     cursor: pointer;
@@ -95,15 +95,17 @@
   }
 
   .placeholder-content {
-    border: none;
+    border: 1px solid red;
     width: 100%;
     letter-spacing: normal;
     font-weight: 400;
     cursor: text;
+    text-align: start;
     color: $primary-font-black;
     font-size: 14px;
-    line-height: 18px;
-    background-color: transparent;
+    line-height: 20px;
+    box-sizing: border-box;
+    background-color: yellow;
     transition: font-size 0.3s ease, opacity 0.3s ease;
 
     .placeholder-content.scrolled {
