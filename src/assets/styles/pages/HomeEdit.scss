@@ -1,57 +1,46 @@
-.home-edit-container {
-    // z-index: 100;
-    background-color: $clr6;
-    // min-height: 100vh;
-    overflow-y: auto;
-    // margin-block-end: 82px;
-    // margin-block-start: 88px;
-    margin-inline: auto; 
-    width: 100%;
-    padding-inline: 2rem;
-    box-sizing: border-box;
-    // padding-inline: 80px;
-    height: calc(100vh - 300px);
-    scrollbar-width: none;
-    
-    .home-edit-main {
-        margin-block: auto;
 
+.home-edit-container {
+    height: 100%;
+     
+    .home-edit-main {
+        height: 100%;
+        overflow-y: auto; 
+        padding-block-end: 5.75rem; 
+        display: flex;
+        align-items: center;
+        animation-duration: 0.6s;
+        animation-fill-mode: forwards;
+
+        &.fade-in {
+            animation-name: fadeIn;
+        }
+
+        &.fade-out {
+            animation-name: fadeOut;
+        }
     }
     
-        .home-edit-form {
-            width: 100%;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            -webkit-font-smoothing: antialiased;
-            height: calc(-170px + 100vh);
-            
-            .home-edit-step-1.selected {
-                
-                display: flex;
-                width: 100%;
-                justify-content: space-between;
-                align-items: center;
-                transition: opacity 0.6s;
-                opacity: 1;
-                height: 100%;
-                margin: 10px 0;
-                
+}  
 
-
-                
-                
-                // transition: all 1s ease-in-out;
-                // animation: fade-in 1s ease-in-out;
-
-                // margin: 10px 0;
-                // padding: 0;
-
-            }
-        }
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
-       
+
+    
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
 
 @media (max-width: $mobile-breakpoint) {
 

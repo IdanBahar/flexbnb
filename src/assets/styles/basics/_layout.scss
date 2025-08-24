@@ -13,24 +13,21 @@
   & > footer {
     grid-row: 3;
     grid-column: 1/-1;
-    height: auto;
   }
 
-   main {
+  & > .home-edit-footer {
+    grid-row: 3;
+    grid-column: 1 / -1;
+  }
+
+   & > main {
     grid-column: 2;
     grid-row: 2;
     min-height: 0;
-    height: 100%;
     overflow-y: auto;
     -ms-overflow-style: none;
     
-
-//    .main-inner {
-//   grid-column: 2;
-//   min-height: 100%;
-//   display: flex;
-//   flex-direction: column;
-// }
+    
   }
   main::-webkit-scrollbar { //works on safari and opera
     display: none;
@@ -39,24 +36,24 @@
 .full {
       grid-column: 1 / -1;
   }
-  // @include for-narrow-layout {
-  //     grid-template-columns:
-  //         minmax(20px, 1fr)
-  //         minmax(auto, $mobile-breakpoint)
-  //         minmax(20px, 1fr);
-  // }
-  // @include for-normal-layout {
-  //     grid-template-columns:
-  //         minmax(20px, 1fr)
-  //         minmax(auto, $narrow-breakpoint)
-  //         minmax(20px, 1fr);
-  // }
-  // @include for-wide-layout {
-  //     grid-template-columns:
-  //         minmax(20px, 1fr)
-  //         minmax(auto, $normal-breakpoint)
-  //         minmax(20px, 1fr);
-  // }
+    @include for-narrow-layout {
+        grid-template-columns:
+            minmax(20px, 1fr)
+            minmax(auto, $mobile-breakpoint)
+          minmax(20px, 1fr);
+  }
+  @include for-normal-layout {
+      grid-template-columns:
+          minmax(20px, 1fr)
+          minmax(auto, $narrow-breakpoint)
+          minmax(20px, 1fr);
+  }
+  @include for-wide-layout {
+      grid-template-columns:
+          minmax(20px, 1fr)
+          minmax(auto, $normal-breakpoint)
+          minmax(20px, 1fr);
+  }
 }
 
 .homed-grid {

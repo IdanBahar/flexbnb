@@ -1,4 +1,4 @@
-import { Routes, Route, Navigate } from 'react-router'
+import { Routes, Route, Navigate, useLocation } from 'react-router'
 import { userService } from './services/user'
 import { AboutUs, AboutTeam, AboutVision } from './pages/AboutUs'
 import { HomeIndex } from './pages/HomeIndex.jsx'
@@ -9,6 +9,7 @@ import { AdminIndex } from './pages/AdminIndex.jsx'
 import { HomeDetails } from './pages/HomeDetails'
 import { UserDetails } from './pages/UserDetails'
 
+
 import { AppHeader } from './cmps/AppHeader'
 import { AppFooter } from './cmps/AppFooter'
 import { UserMsg } from './cmps/UserMsg.jsx'
@@ -16,15 +17,26 @@ import { LoginSignup } from './pages/LoginSignup.jsx'
 import { Login } from './pages/Login.jsx'
 import { Signup } from './pages/Signup.jsx'
 import { ScrollToTop } from './cmps/ScrollToTop.jsx'
-import { ScrollProvider } from './context/ScrollContext.jsx'
+import { ScrollContext, ScrollProvider } from './context/ScrollContext.jsx'
 import { PotentialOrderProvider } from './context/potential-order/PotentialOrderContext.jsx'
 import { Hosting } from './pages/Hosting.jsx'
 import { HomeEdit } from './pages/HomeEdit.jsx'
 import { HomeEditProvider } from './context/home-edit/HomeEditContext.jsx'
-import { useRef } from 'react'
+import { useContext, useRef } from 'react'
+import { LabelsSlider } from './cmps/LabelsSlider.jsx'
+import { HomeEditFooter } from './cmps/home-edit/HomeEditFooter.jsx'
+
 
 export function RootCmp() {
   const mainRef = useRef()
+  const location = useLocation()
+  const isIndex = location.pathname === '/'
+  const isHomeEdit = location.pathname === '/hosting/edit'
+  const {isScrolled, setIsScrolled} = useContext(ScrollContext)
+  
+  
+  console.log('📍location.pathname:', location.pathname)
+console.log('🏠 isIndex:', isIndex)
   return (
     
       <ScrollProvider>
@@ -34,10 +46,11 @@ export function RootCmp() {
                 
                   <div className='main-container'>
                     <AppHeader scrollContainerRef={mainRef} />
+                      
                       {/* <UserMsg /> */}
                         <main ref={mainRef}>
-                          <div className="main-inner">
-                              <Routes>
+                          {/* {isIndex && <LabelsSlider />} */}
+                            <Routes>
                               {/* <Route path='' element={<HomePage />} /> */}
                               <Route path='' element={<HomeIndex />} />
 
@@ -66,13 +79,13 @@ export function RootCmp() {
                                   <Route path='edit' element={<HomeEdit />} />
                                   <Route path='reservations' element={<UserDetails />} />
                                 </Route>
-                            </Routes>
-                          </div>
-                          
-                        </main>                          
-                         <AppFooter />
+                            </Routes>                         
+                        </main> 
+                                                
+                        {isHomeEdit && <HomeEditFooter />}
+                        {/* <AppFooter /> */}
                       </div> 
-              </HomeEditProvider>
+                    </HomeEditProvider>
                   </PotentialOrderProvider>      
                 </ScrollProvider>
               
