@@ -317,6 +317,62 @@ export function SearchBar({ shouldCollapse, forceExpand, setForceExpand, scrollC
   // console.log('city filter:', filterByToEdit.city)
   return (
     <search>
+      {isMobile ? (
+        <>
+          {/* מובייל – כפתור פתיחה */}
+          {!openedDropdown && (
+            <div
+              className="search-bar-mobile"
+              onClick={() => setOpenedDropdown('mobile')}
+            >
+              <div className="mobile-placeholder">
+                <ReactSVG src="/svgs/search-icon.svg" />
+                <span>Start your search</span>
+              </div>
+            </div>
+          )}
+
+          {/* Overlay במסך מלא */}
+          {openedDropdown === 'mobile' && (
+            <div className="mobile-search-overlay">
+              <button
+                className="close-btn"
+                onClick={() => setOpenedDropdown(null)}
+              >
+                ✕
+              </button>
+
+              <div className="mobile-section">
+                <h3>Where</h3>
+                <input
+                  type="search"
+                  placeholder="Search destinations"
+                  value={filterByToEdit.city}
+                  readOnly
+                />
+              </div>
+
+              <div className="mobile-section">
+                <h3>When</h3>
+                <button onClick={() => setOpenedDropdown('dates')}>Add dates</button>
+              </div>
+
+              <div className="mobile-section">
+                <h3>Who</h3>
+                <button onClick={() => setOpenedDropdown('capacity')}>
+                  Add guests
+                </button>
+              </div>
+
+              <button className="search-btn" onClick={handleSubmit}>
+                <ReactSVG src="/svgs/search-icon.svg" /> Search
+              </button>
+            </div>
+          )}
+        </>
+      ) : (
+
+      //..desktop
       <div
         className={`search-bar-container ${scrolled ? 'scrolled' : ''} 
         ${activeButton ? 'has-active' : ''} ${forceExpand ? 'expanded' : ''}` }
@@ -498,6 +554,7 @@ export function SearchBar({ shouldCollapse, forceExpand, setForceExpand, scrollC
           <div className="active-indicator" style={indicatorStyle}></div>
         </div>
       </div>
+    )}
     </search>
   )
 }
