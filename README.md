@@ -113,7 +113,7 @@ backend/       # Node.js + Express backend
 ```
 
 ## Frontend Repository
-🖥️ [Flexbnb Backend on GitHub]([https://github.com/IdanBahar/flexbnb_api)
+🖥️ [Flexbnb Backend on GitHub](https://github.com/IdanBahar/flexbnb_api)
 
 ## Contact
 
