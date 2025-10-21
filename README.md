@@ -1,7 +1,7 @@
 [flexbnb_readme.md](https://github.com/user-attachments/files/23027359/flexbnb_readme.md)
-# Flexbnb — Airbnb-Inspired Full-Stack Booking Platform
+# 🏠 Flexbnb — Airbnb-Inspired Full-Stack Booking Platform
 
-🏠Flexbnb is a full-stack, production-style accommodation booking platform designed to deliver a polished, seamless experience for both guests and hosts. Combining a modern, responsive frontend with a robust Node.js/Express backend, Flexbnb features secure authentication, real-time communication, and a scalable architecture.
+Flexbnb is a full-stack, production-style accommodation booking platform designed to deliver a polished, seamless experience for both guests and hosts. Combining a modern, responsive frontend with a robust Node.js/Express backend, Flexbnb features secure authentication, real-time communication, and a scalable architecture.
 
 ## Live Demo
 
