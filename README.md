@@ -112,6 +112,9 @@ backend/       # Node.js + Express backend
   |-- services/    # Utility functions and integrations
 ```
 
+## Frontend Repository
+🖥️ [Flexbnb Backend on GitHub]([https://github.com/IdanBahar/flexbnb_api))
+
 ## Contact
 
 Built by Idan Bahar — passionate about creating seamless full-stack applications combining design, functionality, and performance.
